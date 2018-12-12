@@ -11,9 +11,9 @@ import threading
 from tempfile import NamedTemporaryFile
 
 logging.basicConfig()  # 生成日志
-#
-# bot = Bot(console_qr=True, cache_path=True)  # 实例化机器人 缓存登录
-bot = Bot()
+
+bot = Bot(console_qr=True, cache_path=True)  # 实例化机器人 缓存登录
+# bot = Bot()
 
 bot.enable_puid()  # 每个用户定义了一个相对稳定的对象/用户id
 
