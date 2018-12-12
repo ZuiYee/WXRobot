@@ -23,9 +23,9 @@ def send_online_notification(name):
     my_friend = ensure_one(bot.search(name))
     while True:
         my_friend.send('I\'m Still Alive!! ' + time.strftime('%y/%m/%d-%H:%M:%S', time.localtime()))
-        time.sleep(600)
+        time.sleep(36000)
 
-@bot.register(bot.self)
+@bot.register()
 def reply(msg):
     if msg.text == '1':
         return 'I\'m Still Alive!! ' + time.strftime('%y/%m/%d-%H:%M:%S', time.localtime())
@@ -70,5 +70,5 @@ positiveSendingThread = threading.Thread(target=send_online_notification, args=(
 positiveSendingThread.setDaemon(True)
 positiveSendingThread.start()
 
-# embed()
+embed()  # 保持程序运行
 bot.join()

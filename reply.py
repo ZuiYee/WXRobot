@@ -22,21 +22,21 @@ APIAI_TOKEN = '63ae6dcab54343efac3ac31c845aa7fe'
 
 def robot_reply(msg_content, user_id):
     url_api = 'http://www.tuling123.com/openapi/api'
-    print(msg_content)
-    print(user_id)
+    # print(msg_content)
+    # print(user_id)
     data = {
         'key': TULING_TOKEN,
         'info': msg_content,  # 收到的文字内容
         'userid': user_id
     }
-    print("use Tuling reply")
+    # print("use Tuling reply")
     s = requests.post(url_api, data=data,).json()
 
 
 
 
-    print('s:', s)
-    print('return code:' + str(s['code']))
+    # print('s:', s)
+    # print('return code:' + str(s['code']))
     if s['code'] == 100000:
         return s['text']
     if s['code'] == 200000:
@@ -50,7 +50,6 @@ def robot_reply(msg_content, user_id):
 
 
 def apiai_reply(msg_content, user_id):
-    print("try API AI reply..")
     ai = apiai.ApiAI(APIAI_TOKEN)
     request = ai.text_request()
     request.lang = 'zh-CN'
@@ -63,8 +62,7 @@ def apiai_reply(msg_content, user_id):
     if s['result']['action'] == 'input.unknown':
         raise Exception('api.ai cannot reply this message')
     if s['status']['code'] == 200:
-        print("use APIAI reply")
-        print('return code: ' + str(s['status']['code']))
+        # print('return code: ' + str(s['status']['code']))
         return s['result']['fulfillment']['speech']
 
 #
